@@ -60,3 +60,17 @@ def process(words):
 		    #.write(b'l')
 		    return
 
+	if (len(word_list)==1):
+		if (word_list[0] == robot_name):
+		    talk("How Can I help you?")
+		    #.write(b'l')
+		    return
+
+	if word_list[0] == 'play':
+		"""if command for playing things, play from youtube"""
+		talk("Okay boss, playing")
+		extension = ' '.join(word_list[1:])                    # search without the command word
+		port.write(b'u')
+		pywhatkit.playonyt(extension)   
+		port.write(b'l')          
+		return
