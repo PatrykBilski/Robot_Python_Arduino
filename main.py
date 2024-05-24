@@ -74,3 +74,21 @@ def process(words):
 		pywhatkit.playonyt(extension)   
 		port.write(b'l')          
 		return
+	elif word_list[0] == 'search':
+		"""if command for google search"""
+		port.write(b'u')
+		talk("Okay boss, searching")
+		port.write(b'l')
+		extension = ' '.join(word_list[1:])
+		pywhatkit.search(extension)
+		return
+
+	if (word_list[0] == 'get') and (word_list[1] == 'info'):
+		"""if command for getting info"""
+		port.write(b'u')
+		talk("Okay, I am right on it")
+		port.write(b'u')
+		extension = ' '.join(word_list[2:])                    # search without the command words
+		inf = pywhatkit.info(extension)
+		talk(inf)                                              # read from result             
+		return
