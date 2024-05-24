@@ -44,3 +44,74 @@ def listen():
 				# if wake up word found....
 				print("[wake-up word found]")
 				process(command)                 # call process funtion to take action
+	except:
+		pass
+
+def process(words):
+	""" process what user says and take actions """
+	print(words) # check if it received any command
+
+	# break words in
+	word_list = words.split(' ')[1:]   # split by space and ignore the wake-up word
+
+	if (len(word_list)==1):
+		if (word_list[0] == robot_name):
+		    talk("How Can I help you?")
+		    #.write(b'l')
+		    return
+
+	if (len(word_list)==1):
+		if (word_list[0] == robot_name):
+		    talk("How Can I help you?")
+		    #.write(b'l')
+		    return
+
+	if word_list[0] == 'play':
+		"""if command for playing things, play from youtube"""
+		talk("Okay boss, playing")
+		extension = ' '.join(word_list[1:])                    # search without the command word
+		port.write(b'u')
+		pywhatkit.playonyt(extension)   
+		port.write(b'l')          
+		return
+	elif word_list[0] == 'search':
+		"""if command for google search"""
+		port.write(b'u')
+		talk("Okay boss, searching")
+		port.write(b'l')
+		extension = ' '.join(word_list[1:])
+		pywhatkit.search(extension)
+		return
+
+	if (word_list[0] == 'get') and (word_list[1] == 'info'):
+		"""if command for getting info"""
+		port.write(b'u')
+		talk("Okay, I am right on it")
+		port.write(b'u')
+		extension = ' '.join(word_list[2:])                    # search without the command words
+		inf = pywhatkit.info(extension)
+		talk(inf)                                              # read from result             
+		return
+	elif (word_list[0] == 'Go') and (word_list[1] == 'out'):
+		"""if command for getting info"""
+		port.write(b'u')
+		talk("Sadge")             
+		return
+
+	elif word_list[0] == 'open':
+		"""if command for opening URLs"""
+		port.write(b'l')
+		talk("Opening, sir")
+		url = f"http://{''.join(word_list[1:])}"   # make the URL
+		webbrowser.open(url)
+		
+	elif word_list[0] == 'uppercut':
+		port.write(b'U')
+
+	elif word_list[0] == 'smash':
+		port.write(b's')
+
+	elif word_list[0] == 'punch':
+		port.write(b'p')
+
+		
