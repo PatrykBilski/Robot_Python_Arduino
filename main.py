@@ -44,3 +44,19 @@ def listen():
 				# if wake up word found....
 				print("[wake-up word found]")
 				process(command)                 # call process funtion to take action
+	except:
+		pass
+
+def process(words):
+	""" process what user says and take actions """
+	print(words) # check if it received any command
+
+	# break words in
+	word_list = words.split(' ')[1:]   # split by space and ignore the wake-up word
+
+	if (len(word_list)==1):
+		if (word_list[0] == robot_name):
+		    talk("How Can I help you?")
+		    #.write(b'l')
+		    return
+
