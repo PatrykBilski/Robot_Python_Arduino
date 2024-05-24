@@ -104,3 +104,12 @@ def process(words):
 		talk("Opening, sir")
 		url = f"http://{''.join(word_list[1:])}"   # make the URL
 		webbrowser.open(url)
+		
+	elif word_list[0] == 'uppercut':
+		port.write(b'U')
+
+	elif word_list[0] == 'smash':
+		port.write(b's')
+
+	elif word_list[0] == 'punch':
+		port.write(b'p')
