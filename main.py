@@ -92,3 +92,15 @@ def process(words):
 		inf = pywhatkit.info(extension)
 		talk(inf)                                              # read from result             
 		return
+	elif (word_list[0] == 'Go') and (word_list[1] == 'out'):
+		"""if command for getting info"""
+		port.write(b'u')
+		talk("Sadge")             
+		return
+
+	elif word_list[0] == 'open':
+		"""if command for opening URLs"""
+		port.write(b'l')
+		talk("Opening, sir")
+		url = f"http://{''.join(word_list[1:])}"   # make the URL
+		webbrowser.open(url)
